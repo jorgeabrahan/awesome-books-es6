@@ -1,4 +1,5 @@
 import Books from './modules/Books.js';
+import setInitialTime from './modules/setInitialTime.js';
 
 const booksCnt = document.getElementById('booksCnt');
 const frmAddBook = document.getElementById('frmAddBook');
@@ -33,3 +34,7 @@ frmAddBook.addEventListener('submit', (e) => {
   frmAddBook.title.focus();
   books.showMessage(true, 'Book added successfully!');
 });
+
+window.onload = () => {
+  setInitialTime();
+};
