@@ -1,15 +1,30 @@
 import Book from './Book.js';
 
 export default class Books {
-  constructor(container) {
+  constructor(container, message) {
     this.books = JSON.parse(localStorage.getItem('books')) || [];
     this.container = container;
     this.msgNoBooks = container.querySelector('#msgNoBooks');
+    this.message = message;
     if (this.amount > 0) {
       this.load();
       return;
     }
     this.toggleNoBooksMessage();
+  }
+
+  showMessage(isSuccess, msg) {
+    this.message.classList.remove('d-none');
+    this.message.textContent = msg;
+    if (isSuccess) {
+      this.message.classList.add('message--success');
+      this.msgTimer = setTimeout(() => {
+        this.message.className = 'd-none message';
+      }, 2500);
+      return;
+    }
+    clearTimeout(this.msgTimer);
+    this.message.classList.add('message--error');
   }
 
   toggleNoBooksMessage() {

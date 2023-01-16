@@ -17,20 +17,7 @@ btnsPages.forEach((btnPage) => {
   });
 });
 
-const books = new Books(booksCnt);
-
-const showFrmAddBookMsg = (isSuccess, msg) => {
-  frmAddMsg.classList.remove('d-none');
-  if (isSuccess) {
-    frmAddMsg.classList.add('message--success');
-    setTimeout(() => {
-      frmAddMsg.className = 'd-none message';
-    }, 2500);
-  } else {
-    frmAddMsg.classList.add('message--error');
-  }
-  frmAddMsg.textContent = msg;
-};
+const books = new Books(booksCnt, frmAddMsg);
 
 frmAddBook.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -38,11 +25,11 @@ frmAddBook.addEventListener('submit', (e) => {
   const title = frmAddBook.title.value.trim();
   const author = frmAddBook.author.value.trim();
   if (title.length === 0 || author.length === 0) {
-    showFrmAddBookMsg(false, 'Fill all inputs before submiting!');
+    books.showMessage(false, 'Fill all inputs before submiting!');
     return;
   }
   books.add(title, author);
   frmAddBook.reset();
   frmAddBook.title.focus();
-  showFrmAddBookMsg(true, 'Book added successfully!');
+  books.showMessage(true, 'Book added successfully!');
 });
