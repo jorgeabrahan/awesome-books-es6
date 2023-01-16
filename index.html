@@ -4,11 +4,75 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Awesome Books Using ES6</title>
+    <title>Awesome Books</title>
     <link rel="stylesheet" href="./css/index.css" />
-    <script src="./js/index.js" type="module" defer></script>
   </head>
   <body>
-    <h1>Awesome Books Using ES6 modules</h1>
+    <header class="header center">
+      <div class="header__content">
+        <h1 class="header__title">Awesome Books</h1>
+        <div>
+          <button class="header__button header__button--active" to-open="list">List</button
+          ><button class="header__button" to-open="addNew">Add new</button
+          ><button class="header__button" to-open="contact">Contact</button>
+        </div>
+      </div>
+      <p class="header__date" id="dateTime"></p>
+    </header>
+
+    <main class="center">
+      <!-- added books list section -->
+      <section class="page mb-2rem" id="list" open>
+        <h2 class="title">All awesome books</h2>
+        <div class="books" id="booksCnt">
+          <p id="msgNoBooks" class="d-none books__msg">No books added yet!</p>
+        </div>
+      </section>
+      <!-- add new book section -->
+      <section class="page mb-2rem" id="addNew">
+        <h2 class="title">Add a new book</h2>
+        <form class="add" id="frmAddBook">
+          <label class="sr-only" for="title">title</label>
+          <input
+            class="add__input"
+            type="text"
+            name="title"
+            id="title"
+            placeholder="Title"
+            minlength="3"
+            autocomplete="off"
+          />
+          <label class="sr-only" for="author">author</label>
+          <input
+            class="add__input"
+            type="text"
+            name="author"
+            id="author"
+            placeholder="Author"
+            minlength="3"
+            autocomplete="off"
+          />
+          <button class="button--shadow">Add</button>
+        </form>
+        <p class="d-none message" id="frmAddMsg"></p>
+      </section>
+      <!-- contact information section -->
+      <section class="page mb-2rem" id="contact">
+        <h2 class="title">Contact information</h2>
+        <p>Do you have any questions or you just want to say "Hello"? <br />You can reach out to us!</p>
+        <ul>
+          <li>Our e-mail: mail@mail.com</li>
+          <li>Our phone number: +504 9993 9994</li>
+          <li>Our address: Streetname 22, 84053 City, Country</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="center">
+      <div class="footer__content">
+        <p>Copyright &copy; Jorge</p>
+      </div>
+    </footer>
   </body>
+  <script type="module" src="./js/index.js"></script>
 </html>
